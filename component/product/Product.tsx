@@ -1,24 +1,32 @@
 import Image from 'next/image';
-import React,{FC}from 'react'
+import Link from 'next/link';
+import React, { FC } from 'react'
 
-export interface Product {
+export interface ProductProps {
   id: number;
-  name: string;
-  cover: string;
+  title: string;
+  image: string;
   description?: string;
   price: number;
-  rating?: number;
+  rating?: {
+    rate: number;
+    count: number
+  };
 }
 
-const Product: FC<Product> = ({id,name,cover,price,rating}) => {
+const Product: FC<ProductProps> = ({ id, title, image, price }) => {
+  let detailsProduct: string = `/products/${id}`;
   return (
-<div>
-    <div>
-      <Image src={cover} alt={name}  width={150} height={150} layout={'fixed'}/>
-    </div>
-    <p>{name}</p>
-    <p>{price}</p>
-</div>
+    <li>
+      <div>
+        <Image src={image} alt={title} width={150} height={150} layout={'fixed'} />
+      </div>
+      <p>{title}</p>
+      <p>${price}</p>
+      <Link href={detailsProduct}>
+      <a>See more</a>
+      </Link>
+    </li>
   )
 }
 

@@ -1,12 +1,21 @@
-import React,{FC} from 'react'
-
+import React, { FC } from 'react'
+import Product, { ProductProps } from './Product'
 type Products = {
-  items:[object]
+  items: [ProductProps];
+
 }
 
-const Products:FC<Products> = ({items}) => {
+const Products: FC<Products> = ({ items }) => {
   return (
-    {items.map}
+    <ul>
+      {
+        items.map((items) => <Product
+          key={items.id}
+          title={items.title}
+          image={items.image} id={items.id} price={items.price} />)
+      }
+
+    </ul>
   )
 }
 
