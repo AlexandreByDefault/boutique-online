@@ -3,8 +3,10 @@ import Link from 'next/link';
 import React, { FC } from 'react'
 
 export interface ProductProps {
+
   id: number;
   title: string;
+  category?: string
   image: string;
   description?: string;
   price: number;
@@ -24,7 +26,7 @@ const Product: FC<ProductProps> = ({ id, title, image, price }) => {
       <p>{title}</p>
       <p>${price}</p>
       <Link href={detailsProduct}>
-      <a>See more</a>
+        <a>See more</a>
       </Link>
     </li>
   )
