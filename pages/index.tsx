@@ -1,8 +1,8 @@
-import type { NextPage ,InferGetStaticPropsType } from 'next'
+import type { NextPage ,InferGetStaticPropsType, GetStaticProps } from 'next'
 import { ProductProps } from '../component/product/Product'
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
-import { GetStaticProps } from 'next'
+import {  } from 'next'
 import { reduceArray } from '../component/utils/utils'
 import Products from '../component/product/Product-list'
 
