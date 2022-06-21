@@ -14,7 +14,9 @@ export interface ProductProps {
     rate: number;
     count: number
   };
+  quantity? : number
 }
+
 
 const Product: FC<ProductProps> = ({ id, title, image, price }) => {
   let detailsProduct: string = `/products/${id}`;

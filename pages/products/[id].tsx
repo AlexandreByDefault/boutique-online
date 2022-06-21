@@ -11,9 +11,10 @@ import StarRatings from 'react-star-ratings';
 
 const DetailProduct: NextPage = ({ params, similar }: InferGetStaticPropsType<typeof getStaticProps>) => {
   const { title, rating, price, description, category, image, id } = params
-  const { showCart,incQty,decQty,qty } = useStateContext()
+  const { showCart,incQty,decQty,qty, onAdd,cartItems,totalPrice,totalQuantities} = useStateContext()
 
-
+  console.log(cartItems);
+  
 
   return (
     <div>
@@ -23,15 +24,23 @@ const DetailProduct: NextPage = ({ params, similar }: InferGetStaticPropsType<ty
         </div>
 
         <div>
-          <h1>{title}</h1>
+          <h1>{price}</h1>
           <p>{description}</p>
           <StarRatings numberOfStars={5} rating={rating.rate} starRatedColor={'#FFB627'} starDimension={'15'} />
         </div>
 
         <div>
-          <span  onClick={decQty}>-</span>
+          <span onClick={() => onAdd(params,qty)}>Add</span>
+          <span onClick={incQty}> ± </span>
           <span>{qty}</span>
-          <span onClick={incQty}>+</span>
+          <span onClick={decQty}> - </span>
+
+          <div>
+
+            <p>{cartItems.length}</p>
+            <p>{totalPrice}</p>
+
+          </div>
         </div>
 
 
