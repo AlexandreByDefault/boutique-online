@@ -3,13 +3,16 @@ import { ProductProps } from '../../component/product/Product'
 import { NextPage, InferGetStaticPropsType, GetStaticProps, GetStaticPaths } from 'next';
 import { reduceArray } from '../../component/utils/utils'
 import Cart from '../../component/cart/Cart'
+import {useStateContext} from '../../component/context/context'
 
-type Props = {}
+
+
 const DetailProduct : NextPage = ({params,similar}: InferGetStaticPropsType<typeof getStaticProps>) => {
+  const {qty,showCart} = useStateContext()
   return (
     <div>
       DetailProduct
-      <button onClick={''}></button>
+      <button>{qty}</button>
     </div>
   )
 }
@@ -43,7 +46,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
     const res = await fetch("https://fakestoreapi.com/products");
     const products = await res.json();
     const ids = products.map((product : ProductProps) => ({
-      params: { id: product.id },
+      params: { id: product.id.toString() },
     }));
 
     return {
