@@ -1,12 +1,16 @@
 import React from 'react'
+import { useStateContext } from '../context/context'
 
-type Props = {
 
-}
 
-const Cart = (props: Props) => {
+const Cart = () => {
+  const {setShowCart} = useStateContext()
   return (
-    <div>Cart je fonctionne</div>
+    <div>
+      <span onClick={() => setShowCart(false)}>close </span>
+      Cart je fonctionne
+
+      </div>
   )
 }
 
