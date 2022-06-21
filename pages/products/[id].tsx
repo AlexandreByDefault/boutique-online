@@ -2,17 +2,41 @@ import React from 'react'
 import { ProductProps } from '../../component/product/Product'
 import { NextPage, InferGetStaticPropsType, GetStaticProps, GetStaticPaths } from 'next';
 import { reduceArray } from '../../component/utils/utils'
-import Cart from '../../component/cart/Cart'
-import {useStateContext} from '../../component/context/context'
+import { useStateContext } from '../../component/context/context'
+import Image from 'next/image';
+import StarRatings from 'react-star-ratings';
 
 
 
-const DetailProduct : NextPage = ({params,similar}: InferGetStaticPropsType<typeof getStaticProps>) => {
-  const {qty,showCart} = useStateContext()
+
+const DetailProduct: NextPage = ({ params, similar }: InferGetStaticPropsType<typeof getStaticProps>) => {
+  const { title, rating, price, description, category, image, id } = params
+  const { showCart,incQty,decQty,qty } = useStateContext()
+
+
+
   return (
     <div>
-      DetailProduct
-      <button>{qty}</button>
+      <div>
+        <div>
+          {/* <Image /> */}
+        </div>
+
+        <div>
+          <h1>{title}</h1>
+          <p>{description}</p>
+          <StarRatings numberOfStars={5} rating={rating.rate} starRatedColor={'#FFB627'} starDimension={'15'} />
+        </div>
+
+        <div>
+          <span  onClick={decQty}>-</span>
+          <span>{qty}</span>
+          <span onClick={incQty}>+</span>
+        </div>
+
+
+      </div>
+
     </div>
   )
 }
@@ -24,36 +48,36 @@ export const getStaticProps: GetStaticProps = async (context) => {
   const products = await res.json();
   const params = context.params?.id;
   const productId = products.find(
-    (product : ProductProps) => product.id.toString() === params
+    (product: ProductProps) => product.id.toString() === params
   );
   const sameCategory = await products.filter(
-    (product : ProductProps) => product.category === productId.category
-    );
-    const reducedSameCategory = reduceArray(sameCategory, 6);
+    (product: ProductProps) => product.category === productId.category
+  );
+  const reducedSameCategory = reduceArray(sameCategory, 6);
 
 
-    return {
-      props: {
-        params: productId,
-        similar: reducedSameCategory,
-      },
-      revalidate: 1800,
-    };
+  return {
+    props: {
+      params: productId,
+      similar: reducedSameCategory,
+    },
+    revalidate: 1800,
+  };
 
-  }
+}
 
-  export const getStaticPaths: GetStaticPaths = async (context) => {
-    const res = await fetch("https://fakestoreapi.com/products");
-    const products = await res.json();
-    const ids = products.map((product : ProductProps) => ({
-      params: { id: product.id.toString() },
-    }));
+export const getStaticPaths: GetStaticPaths = async (context) => {
+  const res = await fetch("https://fakestoreapi.com/products");
+  const products = await res.json();
+  const ids = products.map((product: ProductProps) => ({
+    params: { id: product.id.toString() },
+  }));
 
-    return {
-      paths: ids,
-      fallback: false,
-    };
-  }
+  return {
+    paths: ids,
+    fallback: false,
+  };
+}
 
 
-  export default DetailProduct
+export default DetailProduct
