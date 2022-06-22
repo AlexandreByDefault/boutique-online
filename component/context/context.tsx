@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useState } from "react";
+import Cart from "../cart/Cart";
 import Product from "../product/Product";
 import {ProductProps} from '../product/Product'
 
@@ -15,6 +16,7 @@ interface ContextProps {
   totalQuantities: number
   setTotalQuantities:(totalQuantities: number) => void
   cartItems:ProductProps[]
+  onRemove: Function
 
 }
 const Context = createContext<ContextProps>({} as ContextProps);
@@ -32,6 +34,12 @@ export const StateContext = ({ children }: { children: React.ReactNode }) => {
     setCartItems((prevState)=> [...prevState, {...product}])
     setTotalPrice(prevTotalPrince => prevTotalPrince + product.price)
     setTotalQuantities((prevTotalQuantities) => prevTotalQuantities)
+  }
+
+  const onRemove = (product: ProductProps) => {
+    // const newArray = cartItems.splice(cartItems.findIndex(cart => cart.id === product.id))
+    // setCartItems(newArray)
+    // console.log(newArray);
 
   }
 
@@ -48,7 +56,7 @@ export const StateContext = ({ children }: { children: React.ReactNode }) => {
   }
 
   return (
-    <Context.Provider value={{cartItems,totalQuantities,setTotalQuantities, totalPrice, setTotalPrice, onAdd, qty, setQty, incQty, decQty, showCart, setShowCart }}>
+    <Context.Provider value={{onRemove,cartItems,totalQuantities,setTotalQuantities, totalPrice, setTotalPrice, onAdd, qty, setQty, incQty, decQty, showCart, setShowCart }}>
       {children}
     </Context.Provider>
   )
