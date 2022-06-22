@@ -1,21 +1,21 @@
-import React, { createContext, useContext, useState } from "react";
+import React, { createContext, ProviderProps, useContext, useState } from "react";
 import Cart from "../cart/Cart";
 import Product from "../product/Product";
-import {ProductProps} from '../product/Product'
+import { ProductProps } from '../product/Product'
 
 interface ContextProps {
   qty: number
   showCart: boolean
   setQty: (qty: number) => void
   setShowCart: (showCart: boolean) => void
-  incQty:(qty: React.MouseEvent<HTMLSpanElement, MouseEvent>) => void
+  incQty: (qty: React.MouseEvent<HTMLSpanElement, MouseEvent>) => void
   decQty: (qty: React.MouseEvent<HTMLSpanElement, MouseEvent>) => void
   onAdd: Function
   totalPrice: number
   setTotalPrice: (totalPrice: number) => void
   totalQuantities: number
-  setTotalQuantities:(totalQuantities: number) => void
-  cartItems:ProductProps[]
+  setTotalQuantities: (totalQuantities: number) => void
+  cartItems: ProductProps[]
   onRemove: Function
 
 }
@@ -24,41 +24,58 @@ const Context = createContext<ContextProps>({} as ContextProps);
 export const StateContext = ({ children }: { children: React.ReactNode }) => {
   const [qty, setQty] = useState<number>(1);
   const [showCart, setShowCart] = useState<boolean>(false);
-  const [cartItems, setCartItems] = useState <ProductProps[]>([]);
+  const [cartItems, setCartItems] = useState<ProductProps[] >([]);
   const [totalPrice, setTotalPrice] = useState<number>(0);
   const [totalQuantities, setTotalQuantities] = useState(0);
 
 
-  const onAdd = (product: ProductProps, qty?:number )=> {
-    const checkItemsExist = cartItems.map(item => item.id === product.id)
-    setCartItems((prevState)=> [...prevState, {...product}])
-    setTotalPrice(prevTotalPrince => prevTotalPrince + product.price)
-    setTotalQuantities((prevTotalQuantities) => prevTotalQuantities)
-  }
+  const onAdd = (clickedItem: ProductProps) => {
+    setCartItems(prev => {
+      // 1. Is the item already added in the cart?
+      const isItemInCart = prev.find(item => item.id === clickedItem.id);
 
-  const onRemove = (product: ProductProps) => {
-    // const newArray = cartItems.splice(cartItems.findIndex(cart => cart.id === product.id))
-    // setCartItems(newArray)
-    // console.log(newArray);
+      if (isItemInCart) {
+        return prev.map(item =>
+          item.id === clickedItem.id
+            ? { ...item, quantity: item.quantity + 1 }
+            : item
+        );
+      }
+      // First time the item is added
+      return [...prev, { ...clickedItem, quantity: 1 }];
+    });
+  };
 
-  }
 
-  const incQty = () => {
-    if (qty !== 50) {
-      setQty((prevQty) => prevQty + 1)
+  const onRemove = (id: number) => {
+    setCartItems(prev =>
+      prev.reduce((ack, item) => {
+        if (item.id === id) {
+          if (item.quantity === 1) return ack;
+          return [...ack, { ...item, quantity: item.quantity - 1 }];
+        } else {
+          return [...ack, item];
+        }
+      }, [] as ProductProps[])
+    );
+  };
+    const incQty = () => {
+      if (qty !== 50) {
+        setQty((prevQty) => prevQty + 1)
+      }
     }
-  }
-  const decQty = () => {
-    if (qty <= 0) {
-      return 0
+    const decQty = () => {
+      if (qty <= 0) {
+        return 0
+      }
+      setQty((prevQty) => prevQty - 1)
     }
-    setQty((prevQty) => prevQty - 1)
+
+    return (
+      <Context.Provider value={{ onRemove, cartItems, totalQuantities, setTotalQuantities, totalPrice, setTotalPrice, onAdd, qty, setQty, incQty, decQty, showCart, setShowCart }}>
+        {children}
+      </Context.Provider>
+    )
   }
 
-  return (
-    <Context.Provider value={{onRemove,cartItems,totalQuantities,setTotalQuantities, totalPrice, setTotalPrice, onAdd, qty, setQty, incQty, decQty, showCart, setShowCart }}>
-      {children}
-    </Context.Provider>
-  )
-}
-export const useStateContext = () => useContext(Context)
+  export const useStateContext = () => useContext(Context)

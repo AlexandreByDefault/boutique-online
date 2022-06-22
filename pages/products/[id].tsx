@@ -14,7 +14,7 @@ const DetailProduct: NextPage = ({ params, similar }: InferGetStaticPropsType<ty
   const { showCart,incQty,decQty,qty, onAdd,cartItems,totalPrice,totalQuantities} = useStateContext()
 
   console.log(cartItems);
-  
+
 
   return (
     <div>
@@ -26,7 +26,7 @@ const DetailProduct: NextPage = ({ params, similar }: InferGetStaticPropsType<ty
         <div>
           <h1>{price}</h1>
           <p>{description}</p>
-          <StarRatings numberOfStars={5} rating={rating.rate} starRatedColor={'#FFB627'} starDimension={'15'} />
+          <StarRatings numberOfStars={5} rating={rating.rate} starRatedColor={'#FFB627'} starDimension={'15px'} />
         </div>
 
         <div>

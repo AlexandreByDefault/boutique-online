@@ -14,6 +14,7 @@ export interface ProductProps {
     rate: number;
     count: number
   };
+  quantity: number
 }
 
 
