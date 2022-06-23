@@ -7,12 +7,21 @@
   cursor: pointer;
   justify-content: center;
   display: flex;
-  align-items: center;
+
+}
+.container:hover{
+  border-right: 3px solid cornflowerblue;
+  border-left: 3px solid salmon;
+  transition: all 200ms ease-in;
 }
 .img{
   margin: auto;
+  display: flex;
+  justify-content: center;
+  justify-items: center;
 }
 .title{
+  font-family: 'Oswald';
 }
 .price{
   font-weight: bold;
