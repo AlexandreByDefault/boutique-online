@@ -17,9 +17,9 @@ const Home: NextPage = ({ topProducts, newProducts }: InferGetStaticPropsType<ty
 
       <main className={style.container}>
           <div className={style.section}>
-            <h2 className={style.titleHero}>
+            <h1 className={style.titleHero}>
               Welcome to <span> Fake Boutique </span>{" "}
-            </h2>
+            </h1>
             <p className={style.intro}>
               You might looking for a new t-shirt or a luxury watch to impress
               your girlfriend or your friend. Well ! you are on the good place !

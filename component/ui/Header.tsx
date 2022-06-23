@@ -4,7 +4,7 @@ import Cart from '../cart/Cart'
 import { useStateContext } from '../context/context'
 
 const Header = () => {
-  const {setShowCart,showCart} = useStateContext()
+  const {setShowCart,showCart,totalQuantities} = useStateContext()
   return (
     <nav className='container'>
       <div>
@@ -24,7 +24,8 @@ const Header = () => {
         </Link>
       </ul>
 
-      <div>
+      <div className='parent'>
+        <span className='lenght'>{1}</span>
         <button className='btn' onClick={() => setShowCart(true)}> Cart </button>
       </div>
       {showCart && <Cart/>}
@@ -51,9 +52,22 @@ const Header = () => {
             border:transparent;
             border-radius:5px;
             background-color: cornflowerblue;
-
             width: 100px;
             color: white;
+          }
+
+          .parent{
+            position: relative;
+          }
+          .lenght{
+            position: absolute;
+            top:10px;
+            right: 5px;
+            background-color:white;
+            padding: 3px 7px;
+            color:black;
+            border-radius:30px;
+            font-size:10px;
           }`
         }
       </style>
