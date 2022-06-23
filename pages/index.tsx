@@ -1,14 +1,13 @@
 import type { NextPage ,InferGetStaticPropsType, GetStaticProps } from 'next'
 import { ProductProps } from '../component/product/Product'
 import Head from 'next/head'
-import styles from '../styles/Home.module.css'
 import {  } from 'next'
 import { reduceArray } from '../component/utils/utils'
 import Products from '../component/product/Product-list'
 
 const Home: NextPage = ({topProducts,newProducts}: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
-    <div className={styles.container}>
+    <div className=''>
       <Head>
         <title>Fake Boutique</title>
         <meta name="description" content="home page of the page fake boutique " />

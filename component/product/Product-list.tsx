@@ -1,5 +1,6 @@
 import React, { FC } from 'react'
 import Product, { ProductProps } from './Product'
+import Style from './product-list.module.css'
 type Products = {
   items: [ProductProps];
 
@@ -7,14 +8,13 @@ type Products = {
 
 const Products: FC<Products> = ({ items }) => {
   return (
-    <ul>
+    <ul className={Style.container}>
       {
         items.map((items) => <Product
           key={items.id}
           title={items.title}
-          image={items.image} id={items.id} price={items.price} />)
+          image={items.image} id={items.id} price={items.price} quantity={0} />)
       }
-
     </ul>
   )
 }

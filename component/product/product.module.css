@@ -1,0 +1,19 @@
+.container{
+  padding: 1rem;
+  width: 350px;
+  height: 350px;
+  box-shadow: -1px 15px 30px -12px rgb(32, 32, 32);
+  border-radius: 0.9rem;
+  cursor: pointer;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+}
+.img{
+  margin: auto;
+}
+.title{
+}
+.price{
+  font-weight: bold;
+}
