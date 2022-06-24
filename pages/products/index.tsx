@@ -20,6 +20,7 @@ const AllProducts: NextPage = ({ category, products }: InferGetStaticPropsType<t
       <title>Our Products</title>
       <meta name="Our Products" content="See all our fake products that don't exist" />
       <link rel="icon" href="/favicon.ico" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </Head>
 
     <main className={Style.page}>

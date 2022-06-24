@@ -13,6 +13,7 @@ const Home: NextPage = ({ topProducts, newProducts }: InferGetStaticPropsType<ty
         <title>Fake Boutique</title>
         <meta name="home" content="Fake Boutique online is a place where you can't buy stuff you want because it do not really exist" />
         <link rel="icon" href="/favicon.ico" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
       </Head>
 
       <main className={style.container}>

@@ -1,0 +1,42 @@
+.main{
+
+}
+.title, .description{
+  text-align: center;
+  margin: 10px 20px;
+}
+
+.title{
+  font-family: 'Oswald';
+}
+.rank{
+display: flex;
+justify-content: center;
+align-items: center;
+}
+
+.price{
+  font-weight: bolder;
+  text-align: center;
+  font-size: 1.4rem ;
+}
+.btnContainer{
+  display:flex;
+  justify-content: space-around;
+}
+.add, .buy{
+  border-top: 3px solid  cornflowerblue;
+  border-bottom: 3px solid  salmon;
+  border-left: none;
+  border-right:none;
+  background-color: white;
+  color: black;
+  font-size: 1.5rem;
+  margin-left:10px;
+  border-radius: 10px;
+  cursor:pointer;
+}
+.buy{
+  border-top: 3px solid  darkcyan;;
+  border-bottom: 3px solid  salmon;
+}
