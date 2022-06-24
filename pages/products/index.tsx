@@ -3,6 +3,7 @@ import Products from '../../component/product/Product-list'
 import { ProductProps } from '../../component/product/Product'
 import Head from 'next/head'
 import { NextPage, InferGetStaticPropsType, GetStaticProps } from 'next';
+import Style from '../../styles/all.module.css'
 
 const AllProducts: NextPage = ({ category, products }: InferGetStaticPropsType<typeof getStaticProps>) => {
   const [filterProduct, setFilterProducts] = useState(products)
@@ -16,12 +17,12 @@ const AllProducts: NextPage = ({ category, products }: InferGetStaticPropsType<t
   };
   return (<Fragment>
     <Head>
-      <title>Fake Boutique</title>
-      <meta name="home" content="See all our fake product that don't exist" />
+      <title>Our Products</title>
+      <meta name="Our Products" content="See all our fake products that don't exist" />
       <link rel="icon" href="/favicon.ico" />
     </Head>
 
-    <main>
+    <main className={Style.page}>
       <div className='btnContainer'>
 
         <button
