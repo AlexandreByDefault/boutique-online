@@ -2,13 +2,14 @@ import Image from 'next/image'
 import React from 'react'
 import { useStateContext } from '../context/context'
 import Product from '../product/Product'
+import Style from './cart.module.css'
 
 
 
 const Cart = () => {
   const { setShowCart, cartItems, onRemove } = useStateContext()
   return (
-    <div>
+    <div className={Style.container}>
       <span onClick={() => setShowCart(false)}>close </span>
 
       {!cartItems.length && <div> <p>Vous navez rien dans votre panier</p>

@@ -33,8 +33,8 @@ export const StateContext = ({ children }: { children: React.ReactNode }) => {
 
   const onAdd = (clickedItem: ProductProps) => {
     setTotalQuantities(
-    cartItems.filter((items) => items.quantity).reduce((total, current) => total + current.quantity,1)
-    )
+      cartItems.reduce((total, current) => total + (current.quantity || 0), 1)
+  )
 
     setCartItems(prev => {
       // 1. Is the item already added in the cart?
@@ -56,9 +56,8 @@ export const StateContext = ({ children }: { children: React.ReactNode }) => {
 
   const onRemove = (id: number) => {
     setTotalQuantities(
-      cartItems.filter((items) => items.quantity).reduce((total, current) => total - current.quantity,1)
-      )
-
+      cartItems.reduce((total, current) => total + (current.quantity || 0), 1)
+  )
 
     setCartItems(prev =>
       prev.reduce((ack, item) => {
