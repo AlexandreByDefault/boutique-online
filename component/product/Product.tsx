@@ -29,7 +29,7 @@ const Product: FC<ProductProps> = ({ id, title, image, price }) => {
     <Link href={detailsProduct}>
       <a>
       <div className={Style.img}>
-        <Image src={image} alt={title} width={150} height={150} layout={'fixed'}/>
+        <Image src={image} alt={title} width={150} height={150} layout={'fixed'} priority={false}/>
       </div>
       <p className={Style.title}>{title}</p>
       <p className={Style.price}>${price}</p>

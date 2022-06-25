@@ -25,7 +25,7 @@ const Header = () => {
       </ul>
 
       <div className='parent'>
-        <span className='lenght'>{1}</span>
+        <span className='lenght'>{totalQuantities}</span>
         <button className='btn' onClick={() => setShowCart(true)}> Cart </button>
       </div>
       {showCart && <Cart/>}

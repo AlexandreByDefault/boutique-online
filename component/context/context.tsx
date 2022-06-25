@@ -1,4 +1,5 @@
 import React, { createContext, ProviderProps, useContext, useState } from "react";
+import { cursorTo } from "readline";
 import Cart from "../cart/Cart";
 import Product from "../product/Product";
 import { ProductProps } from '../product/Product'
@@ -29,29 +30,35 @@ export const StateContext = ({ children }: { children: React.ReactNode }) => {
   const [totalQuantities, setTotalQuantities] = useState(0);
 
 
-  const onAdd = (clickedItem: ProductProps, quantity:number) => {
 
+  const onAdd = (clickedItem: ProductProps) => {
+    setTotalQuantities(
+    cartItems.filter((items) => items.quantity).reduce((total, current) => total + current.quantity,1)
+    )
 
-    setTotalPrice((prevTotalPrice) => prevTotalPrice + clickedItem.price * quantity);
-    setTotalQuantities((prevTotalQuantities) => prevTotalQuantities + quantity);
     setCartItems(prev => {
       // 1. Is the item already added in the cart?
       const isItemInCart = prev.find(item => item.id === clickedItem.id);
-
       if (isItemInCart) {
         return prev.map(item =>
           item.id === clickedItem.id
-            ? { ...item, quantity: item.quantity + 1 }
-            : item
-        );
-      }
-      // First time the item is added
+          ? { ...item, quantity: item.quantity + 1 }
+          : item
+          );
+
+        }
+        // First time the item is added
+
       return [...prev, { ...clickedItem, quantity: 1 }];
     });
   };
 
 
   const onRemove = (id: number) => {
+    setTotalQuantities(
+      cartItems.filter((items) => items.quantity).reduce((total, current) => total - current.quantity,1)
+      )
+
 
     setCartItems(prev =>
       prev.reduce((ack, item) => {
