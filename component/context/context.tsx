@@ -29,7 +29,11 @@ export const StateContext = ({ children }: { children: React.ReactNode }) => {
   const [totalQuantities, setTotalQuantities] = useState(0);
 
 
-  const onAdd = (clickedItem: ProductProps) => {
+  const onAdd = (clickedItem: ProductProps, quantity:number) => {
+
+
+    setTotalPrice((prevTotalPrice) => prevTotalPrice + clickedItem.price * quantity);
+    setTotalQuantities((prevTotalQuantities) => prevTotalQuantities + quantity);
     setCartItems(prev => {
       // 1. Is the item already added in the cart?
       const isItemInCart = prev.find(item => item.id === clickedItem.id);
@@ -48,6 +52,7 @@ export const StateContext = ({ children }: { children: React.ReactNode }) => {
 
 
   const onRemove = (id: number) => {
+
     setCartItems(prev =>
       prev.reduce((ack, item) => {
         if (item.id === id) {

@@ -40,3 +40,42 @@ align-items: center;
   border-top: 3px solid  darkcyan;;
   border-bottom: 3px solid  salmon;
 }
+
+@media only screen and (min-width: 765px) {
+  .main{
+    margin: 5px;
+
+  }
+
+  .imgcontainer{
+    max-width:500px;
+    height: 500px;
+    margin: auto;
+  }
+
+
+}
+
+
+@media only screen and (min-width: 1024px) {
+  .main{
+    display: flex;
+    flex-direction: row;
+
+  }
+
+  .meta{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .imgcontainer{
+    min-width:500px;
+    background-color: burlywood;
+  }
+
+
+
+}

@@ -47,6 +47,9 @@ const DetailProduct: NextPage = ({ params, similar }: InferGetStaticPropsType<ty
           </div>
         </div>
       </main>
+          <div className={Style.productRecommandation}>
+            <Products items={similar} />
+          </div>
 
     </Fragment>
   )
