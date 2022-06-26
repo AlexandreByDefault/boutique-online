@@ -10,17 +10,11 @@ const Cart = () => {
   const { setShowCart, cartItems, onRemove } = useStateContext()
   return (
     <div className={Style.container}>
-      <span onClick={() => setShowCart(false)}>close </span>
-
-      {!cartItems.length && <div> <p>Vous navez rien dans votre panier</p>
-        <button onClick={() => setShowCart(false)}>continuer votre shopping </button> </div>}
-
-      <div>
-        {cartItems.map((cart) => <div key={cart.id}> <Image key={cart.id} alt={cart.title}
-        src={cart.image} width={50} height={50} layout={'fixed'} /> <span key={'1'}>{cart.quantity}</span>  <button key={cart.id}
-        onClick={() => onRemove(cart.id)}>{cart.quantity}</button></div>)}
-      </div>
-
+      <span className={Style.closeArrow} onClick={() => setShowCart(false)}> &larr; </span>
+      {cartItems.length < 1 && <div className={Style.noAddedContainer}>
+        <p>You add nothing to cart yet...</p>
+        <button> Continue shopping ! </button>
+        </div>}
     </div>
   )
 }
