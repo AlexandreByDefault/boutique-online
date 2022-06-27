@@ -54,7 +54,7 @@ export const StateContext = ({ children }: { children: React.ReactNode }) => {
   };
 
 
-  const onRemove = (id: number) => {
+  const onRemove = (id: number ) => {
     setTotalQuantities(
       cartItems.reduce((total, current) => total + (current.quantity || 0), 1)
   )
@@ -70,16 +70,19 @@ export const StateContext = ({ children }: { children: React.ReactNode }) => {
       }, [] as ProductProps[])
     );
   };
-    const incQty = () => {
-      if (qty !== 50) {
-        setQty((prevQty) => prevQty + 1)
-      }
+
+    const incQty = (id:number) => {
+      const find:ProductProps = cartItems.find( item => item.id == id)
+      const newCart = cartItems.filter(item => item.id !== id);
+      setCartItems([...newCart, {...find, quantity: find?.quantity + 1 } ]);
     }
-    const decQty = () => {
-      if (qty <= 0) {
-        return 0
+    const decQty = (id:number) => {
+      let find: ProductProps = cartItems.find( item => item.id == id)
+      const newCart = cartItems.filter(item => item.id !== id);
+      setCartItems([...newCart, {...find, quantity: find?.quantity - 1 } ]);
+      if(find.quantity < 1){
+        setCartItems([ ...newCart])
       }
-      setQty((prevQty) => prevQty - 1)
     }
 
     return (
