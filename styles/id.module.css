@@ -37,7 +37,7 @@ align-items: center;
   transition: all 300ms ease-in;
 }
 .add:hover, .buy:hover{
-  transform: scale(1.5);
+  transform: scale(1.1);
 }
 
 
