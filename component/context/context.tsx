@@ -14,7 +14,6 @@ interface ContextProps {
   onAdd: Function
   total: number
   totalQuantities: number
-  setTotalQuantities: (totalQuantities: number) => void
   cartItems: ProductProps[]
   onRemove: Function
 
@@ -25,9 +24,10 @@ export const StateContext = ({ children }: { children: React.ReactNode }) => {
   const [qty, setQty] = useState<number>(1);
   const [showCart, setShowCart] = useState<boolean>(false);
   const [cartItems, setCartItems] = useState<ProductProps[]>([]);
-  const [totalQuantities, setTotalQuantities] = useState(0);
+
 
   const total = cartItems.reduce((t, c) => t + c.price * c.quantity, 0)
+  const totalQuantities = cartItems.reduce((t, c) => t + ( c.quantity || 0), 0)
 
 
   useEffect(() => {
@@ -39,9 +39,6 @@ export const StateContext = ({ children }: { children: React.ReactNode }) => {
 
     const quantity = localStorage.getItem('quantity')
 
-    if (quantity) {
-      setTotalQuantities(JSON.parse(quantity))
-    };
 
 
 
@@ -61,19 +58,15 @@ export const StateContext = ({ children }: { children: React.ReactNode }) => {
 
   useEffect(() => {
     localStorage.setItem('total', JSON.stringify(total))
-    localStorage.setItem('quantity', JSON.stringify(totalQuantities))
     localStorage.setItem('cartItems', JSON.stringify(cartItems))
     localStorage.setItem('qty', JSON.stringify(qty))
 
-  }, [total, totalQuantities, cartItems, qty])
+  }, [total,  cartItems, qty])
 
 
 
 
   const onAdd = (clickedItem: ProductProps) => {
-    setTotalQuantities(
-      cartItems.reduce((total, current) => total + (current.quantity || 0), 1)
-    )
     setCartItems(prev => {
       // 1. Is the item already added in the cart?
       const isItemInCart = prev.find(item => item.id === clickedItem.id);
@@ -93,10 +86,6 @@ export const StateContext = ({ children }: { children: React.ReactNode }) => {
 
 
   const onRemove = (id: number) => {
-    setTotalQuantities(
-      cartItems.reduce((total, current) => total + (current.quantity || 0), 1)
-
-    )
 
     setCartItems(prev =>
       prev.reduce((ack, item) => {
@@ -125,7 +114,7 @@ export const StateContext = ({ children }: { children: React.ReactNode }) => {
   }
 
   return (
-    <Context.Provider value={{ onRemove, cartItems, totalQuantities, setTotalQuantities, onAdd, qty, setQty, incQty, decQty, showCart, setShowCart, total}}>
+    <Context.Provider value={{ onRemove, cartItems, totalQuantities, onAdd, qty, setQty, incQty, decQty, showCart, setShowCart, total}}>
       {children}
     </Context.Provider>
   )

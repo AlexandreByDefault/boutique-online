@@ -155,7 +155,7 @@ const Header = () => {
     border-radius: 20px;
     position: absolute;
     top: 16px;
-    right: 170px;
+    right: -10px;
     font-size:13px
       }
       .header-total{
