@@ -24,7 +24,7 @@ const AllProducts: NextPage = ({ category, products }: InferGetStaticPropsType<t
     </Head>
 
     <main className={Style.page}>
-      <div className='btnContainer'>
+      <div className={Style.btnContainer}>
 
         <button
           onClick={() => setFilterProducts(products)}
@@ -55,30 +55,6 @@ const AllProducts: NextPage = ({ category, products }: InferGetStaticPropsType<t
         >
           {category[3]}
         </button>
-
-        <style jsx>
-          {
-            `button{
-              border-top: 3px solid  cornflowerblue;
-              border-bottom: 3px solid  salmon;
-              border-left: none;
-              border-right:none;
-              background-color: white;
-              color: black;
-              font-size: 1.5rem;
-              margin-left:10px;
-              border-radius: 10px;
-              cursor:pointer;
-            }
-
-            .btnContainer{
-              display:flex;
-              justify-content:center;
-              align-items:center;
-              margin-top:10px;
-            }`
-          }
-        </style>
       </div>
       <section>
         <Products items={filterProduct} />

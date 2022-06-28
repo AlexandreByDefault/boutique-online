@@ -8,6 +8,8 @@ type Products = {
 
 const Products: FC<Products> = ({ items }) => {
   return (
+    <div className={Style.main}>
+
     <ul className={Style.container}>
       {
         items.map((items) => <Product
@@ -16,6 +18,7 @@ const Products: FC<Products> = ({ items }) => {
           image={items.image} id={items.id} price={items.price} quantity={0} />)
       }
     </ul>
+    </div>
   )
 }
 
