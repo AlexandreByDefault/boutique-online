@@ -29,7 +29,7 @@ const Home: NextPage = ({ topProducts, newProducts }: InferGetStaticPropsType<ty
             </p>
           </div>
 
-          <div>
+          <div className={style.flexproduct}>
             <h3 className={style.subTitle}>Top rated products</h3>
             <Products items={topProducts} />
             <h3 className={style.subTitle}>New Arrivals</h3>
@@ -61,4 +61,3 @@ export const getStaticProps: GetStaticProps = async (context) => {
     revalidate: false,
   };
 }
-

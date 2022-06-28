@@ -13,6 +13,7 @@ const Footer = (props: Props) => {
         background-color: cornflowerblue;
         display: flex;
         justify-content:center;
+        text-align:center;
       }`
     }
     </style>
