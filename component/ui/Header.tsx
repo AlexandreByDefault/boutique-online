@@ -130,17 +130,19 @@ const Header = () => {
           height: 0px;
         }
         .nav > #nav-check:checked ~ .nav-links {
-          height: calc(30vh);
+          height: calc(30vh - 50px);
           overflow-y: auto;
         }
         .total{
           background-color: red;
-      padding: 2px 5px;
-      border-radius: 20px;
-      position: absolute;
-      top: 16px;
-      right: 276px;
-      font-size:12px
+    padding: 2px 5px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    border-radius: 20px;
+    position: absolute;
+    top: 16px;
+    right: 174px;
+    font-size: 13px;
         }
         .header-total{
           position:relative;
@@ -153,7 +155,7 @@ const Header = () => {
     border-radius: 20px;
     position: absolute;
     top: 16px;
-    right: -10px;
+    right: 170px;
     font-size:13px
       }
       .header-total{
