@@ -51,8 +51,8 @@ export const getStaticProps: GetStaticProps = async (context) => {
   const products = await res.json();
   const recommendedProducts = products.filter((product: ProductProps) => (product.rating!.rate >= 4.4));
   const newProducts = products.filter((product: ProductProps) => (product.rating!.rate <= 3.4));
-  const reducedNewProducts = reduceArray(newProducts, 5);
-  const reducedRecommandedProducts = reduceArray(recommendedProducts, 5);
+  const reducedNewProducts = reduceArray(newProducts, 4);
+  const reducedRecommandedProducts = reduceArray(recommendedProducts,4);
   return {
     props: {
       topProducts: reducedRecommandedProducts,

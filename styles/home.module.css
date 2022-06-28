@@ -1,27 +1,15 @@
-.container{
-  display: grid;
-  grid-template-columns:(5,1fr);
-}
 .section{
-height: 50vh;
-width: 100%;
-text-align: center;
-color: rgb(255, 255, 255);
-background: #020323;
-}
-.titleHero{
-  font-family: 'Oswald', sans-serif;
+  padding: 1rem;
   text-align: center;
-  font-size: 3rem;
+  margin: 2rem 0;
+  background-color: black;
+  color: white;
 }
-.intro{
-  font-size: calc(1.5rem + 1vw);
-  font-family: 'Lato',sans-serif;
-  max-width: 1200px;
-  margin: auto;
-  font-weight: 400;
-  color: rgb(217, 217, 4);
-  margin-bottom: 10px;
+.section p{
+  font-size: 1.2rem;
+  font-family: 'Oswald' sans-serif;
 }
+
 .subTitle{
-  margin-left: 10px;}
+  margin-left: 1.5rem ;
+}
