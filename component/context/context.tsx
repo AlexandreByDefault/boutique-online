@@ -16,6 +16,7 @@ interface ContextProps {
   totalQuantities: number
   cartItems: ProductProps[]
   onRemove: Function
+  setEmpty: Function
 
 }
 const Context = createContext<ContextProps>({} as ContextProps);
@@ -24,10 +25,15 @@ export const StateContext = ({ children }: { children: React.ReactNode }) => {
   const [qty, setQty] = useState<number>(1);
   const [showCart, setShowCart] = useState<boolean>(false);
   const [cartItems, setCartItems] = useState<ProductProps[]>([]);
+  const [empty,setEmpty] = useState<boolean>(false);
 
 
   const total = cartItems.reduce((t, c) => t + c.price * c.quantity, 0)
   const totalQuantities = cartItems.reduce((t, c) => t + ( c.quantity || 0), 0)
+
+  if(empty){
+    cartItems.length = 0
+  }
 
 
   useEffect(() => {
@@ -87,6 +93,7 @@ export const StateContext = ({ children }: { children: React.ReactNode }) => {
 
   const onRemove = (id: number) => {
 
+
     setCartItems(prev =>
       prev.reduce((ack, item) => {
         if (item.id === id) {
@@ -114,7 +121,7 @@ export const StateContext = ({ children }: { children: React.ReactNode }) => {
   }
 
   return (
-    <Context.Provider value={{ onRemove, cartItems, totalQuantities, onAdd, qty, setQty, incQty, decQty, showCart, setShowCart, total}}>
+    <Context.Provider value={{ onRemove, cartItems, totalQuantities, onAdd, qty, setQty, incQty, decQty, showCart, setShowCart, total, setEmpty}}>
       {children}
     </Context.Provider>
   )

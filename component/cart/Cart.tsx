@@ -8,7 +8,7 @@ import MiniCartProduct from './mini-cart-product'
 
 
 const Cart = () => {
-  const { setShowCart, cartItems, onRemove,total} = useStateContext()
+  const { setShowCart, cartItems, onRemove,total, setEmpty} = useStateContext()
   return (
     <div className={Style.container}>
 
@@ -29,6 +29,7 @@ const Cart = () => {
           <div className={Style.btn}>
           <p className={Style.price}>TOTAL : <span> ${total}</span></p>
           <button onClick={() => alert("You can not buy fake product !")}> BUY ! </button>
+          <button onClick={() => setEmpty(true)}> Empty </button>
           </div>
       </div>
     </div>
