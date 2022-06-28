@@ -8,20 +8,30 @@ import MiniCartProduct from './mini-cart-product'
 
 
 const Cart = () => {
-  const { setShowCart, cartItems, onRemove } = useStateContext()
+  const { setShowCart, cartItems, onRemove,total} = useStateContext()
   return (
-    <i className={Style.container}>
-      <span className={Style.closeArrow} onClick={() => setShowCart(false)}> &larr; Back </span>
-      {cartItems.length < 1 && <div className={Style.noAddedContainer}>
-        <p>You add nothing to cart yet...</p>
-        <button> Continue shopping ! </button>
-      </div>}
+    <div className={Style.container}>
 
-      { cartItems.length >= 1 &&  cartItems.map((items) =>
-        <MiniCartProduct key={items.id}
-        title={items.title}
-        image={items.image} id={items.id} price={items.price} quantity={items.quantity} />)}
-    </i>
+      <span className={Style.closeArrow} onClick={() => setShowCart(false)}> &larr; Back </span>
+      <div className={Style.subContainer}>
+        {cartItems.length < 1 && <div className={Style.noAddedContainer}>
+          <p>You add nothing to cart yet...</p>
+          <button onClick={() => setShowCart(false)}> Continue shopping ! </button>
+        </div>}
+        <div>
+
+        { cartItems.length >= 1 &&  cartItems.map((items) =>
+          <MiniCartProduct key={items.id}
+          title={items.title}
+          image={items.image} id={items.id} price={items.price} quantity={items.quantity} />)}
+        </div>
+
+          <div className={Style.btn}>
+          <p className={Style.price}>TOTAL : <span> ${total}</span></p>
+          <button onClick={() => alert("You can not buy fake product !")}> BUY ! </button>
+          </div>
+      </div>
+    </div>
 
   )
 }

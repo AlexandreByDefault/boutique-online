@@ -4,7 +4,7 @@ import Cart from "../cart/Cart";
 import Product from "../product/Product";
 import { ProductProps } from '../product/Product'
 
-interface ContextProps {
+interface ContextProps  {
   qty: number
   showCart: boolean
   setQty: (qty: number) => void
@@ -12,7 +12,7 @@ interface ContextProps {
   incQty: (qty: React.MouseEvent<HTMLSpanElement, MouseEvent>) => void
   decQty: (qty: React.MouseEvent<HTMLSpanElement, MouseEvent>) => void
   onAdd: Function
-  totalPrice: number
+  total: number
   setTotalPrice: (totalPrice: number) => void
   totalQuantities: number
   setTotalQuantities: (totalQuantities: number) => void
@@ -26,17 +26,15 @@ export const StateContext = ({ children }: { children: React.ReactNode }) => {
   const [qty, setQty] = useState<number>(1);
   const [showCart, setShowCart] = useState<boolean>(false);
   const [cartItems, setCartItems] = useState<ProductProps[] >([]);
-  const [totalPrice, setTotalPrice] = useState<number>(0);
   const [totalQuantities, setTotalQuantities] = useState(0);
 
-
+  const total = cartItems.reduce((t,c) => t + c.price * c.quantity,0)
 
   const onAdd = (clickedItem: ProductProps) => {
     setTotalQuantities(
       cartItems.reduce((total, current) => total + (current.quantity || 0), 1)
   )
-
-    setCartItems(prev => {
+  setCartItems(prev => {
       // 1. Is the item already added in the cart?
       const isItemInCart = prev.find(item => item.id === clickedItem.id);
       if (isItemInCart) {
@@ -57,6 +55,7 @@ export const StateContext = ({ children }: { children: React.ReactNode }) => {
   const onRemove = (id: number ) => {
     setTotalQuantities(
       cartItems.reduce((total, current) => total + (current.quantity || 0), 1)
+
   )
 
     setCartItems(prev =>
@@ -72,7 +71,7 @@ export const StateContext = ({ children }: { children: React.ReactNode }) => {
   };
 
     const incQty = (id:number) => {
-      const find:ProductProps = cartItems.find( item => item.id == id)
+      const find: ProductProps = cartItems.find( item => item.id == id)
       const newCart = cartItems.filter(item => item.id !== id);
       setCartItems([...newCart, {...find, quantity: find?.quantity + 1 } ]);
     }
@@ -86,7 +85,7 @@ export const StateContext = ({ children }: { children: React.ReactNode }) => {
     }
 
     return (
-      <Context.Provider value={{ onRemove, cartItems, totalQuantities, setTotalQuantities, totalPrice, setTotalPrice, onAdd, qty, setQty, incQty, decQty, showCart, setShowCart }}>
+      <Context.Provider value={{ onRemove, cartItems, totalQuantities, setTotalQuantities, onAdd, qty, setQty, incQty, decQty, showCart, setShowCart, total}}>
         {children}
       </Context.Provider>
     )

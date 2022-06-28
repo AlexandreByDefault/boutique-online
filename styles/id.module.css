@@ -41,6 +41,10 @@ align-items: center;
   border-bottom: 3px solid  salmon;
 }
 
+.similar{
+  margin-left: 1.5rem;
+}
+
 @media only screen and (min-width: 765px) {
   .main{
     margin: 5px;

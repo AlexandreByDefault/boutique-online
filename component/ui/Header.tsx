@@ -16,10 +16,10 @@ const Header = () => {
         <Link href={'/products'}>
         <a>Products </a>
         </Link>
-        <Link href={'/'}>
+        <Link href={'/contact'}>
         <a>Contact </a>
         </Link>
-        <Link href={'/'}>
+        <Link href={'/about'}>
         <a>About </a>
         </Link>
       </ul>
