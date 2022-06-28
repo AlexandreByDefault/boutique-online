@@ -41,12 +41,13 @@ transition: all 400ms ease-in;
   color: black;
 }
 .noAddedContainer > button {
-  background: rgba(246, 126, 113, 0.502);
+  background: rgba(0, 0, 0, 0.743);
 box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
 border-radius: 10px;
 padding: 10px;
 border: 1px solid rgba( 255, 255, 255, 0.18 );
-color: rgb(0, 0, 0);
+color: rgb(255, 255, 255);
+font-size: 1.5rem;
 }
 .price{
 font-family: 'Oswald';
@@ -55,12 +56,12 @@ text-align: center;
 color: black;
 }
 .btn > button {
-  background: rgba(246, 126, 113, 0.502);
+  background: rgba(0, 0, 0, 0.502);
 box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
 border-radius: 10px;
 padding: 10px;
 border: 1px solid rgba( 255, 255, 255, 0.18 );
-color: rgb(0, 0, 0);
+color: rgb(255, 255, 255);
 width: 90%;
 font-size: 1.5rem;
 

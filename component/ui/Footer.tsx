@@ -10,10 +10,11 @@ const Footer = (props: Props) => {
     <style jsx>{
 
       `.container{
-        background-color: cornflowerblue;
+        background-color: black;
         display: flex;
         justify-content:center;
         text-align:center;
+        color:white;
       }`
     }
     </style>

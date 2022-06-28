@@ -8,7 +8,7 @@ type Products = {
 
 const Products: FC<Products> = ({ items }) => {
   return (
-    <div className={Style.main}>
+    <div className={Style.main} >
 
     <ul className={Style.container}>
       {
