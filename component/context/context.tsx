@@ -33,6 +33,7 @@ export const StateContext = ({ children }: { children: React.ReactNode }) => {
 
   if(empty){
     cartItems.length = 0
+    setEmpty(false)
   }
 
 
