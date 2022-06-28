@@ -130,7 +130,7 @@ const Header = () => {
           height: 0px;
         }
         .nav > #nav-check:checked ~ .nav-links {
-          height: calc(30vh - 50px);
+          height: calc(30vh);
           overflow-y: auto;
         }
         .total{
@@ -139,7 +139,7 @@ const Header = () => {
       border-radius: 20px;
       position: absolute;
       top: 16px;
-      right: 176px;
+      right: 276px;
       font-size:12px
         }
         .header-total{

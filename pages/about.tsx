@@ -14,6 +14,8 @@ const about = (props: Props) => {
             display:flex;
             justify-content:center;
             align-items:center;
+            margin:auto;
+            padding:initial;
           }`
         }
       </style>
