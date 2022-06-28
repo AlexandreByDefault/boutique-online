@@ -9,11 +9,10 @@ interface ContextProps {
   showCart: boolean
   setQty: (qty: number) => void
   setShowCart: (showCart: boolean) => void
-  incQty: (qty: React.MouseEvent<HTMLSpanElement, MouseEvent>) => void
-  decQty: (qty: React.MouseEvent<HTMLSpanElement, MouseEvent>) => void
+  incQty: (qty: number) => void
+  decQty: (qty: number) => void
   onAdd: Function
   total: number
-  setTotalPrice: (totalPrice: number) => void
   totalQuantities: number
   setTotalQuantities: (totalQuantities: number) => void
   cartItems: ProductProps[]
@@ -44,10 +43,7 @@ export const StateContext = ({ children }: { children: React.ReactNode }) => {
       setTotalQuantities(JSON.parse(quantity))
     };
 
-    const cartItems = localStorage.getItem('cartItems')
-    if (cartItems) {
-      setCartItems(JSON.parse(cartItems))
-    };
+
 
     const qty = localStorage.getItem('qty')
     if (qty) {
@@ -55,6 +51,13 @@ export const StateContext = ({ children }: { children: React.ReactNode }) => {
     }
 
   }, [])
+
+  useEffect(()=>{
+    const cartItems = localStorage.getItem('cartItems')
+    if (cartItems) {
+      setCartItems(JSON.parse(cartItems))
+    };
+  },[])
 
   useEffect(() => {
     localStorage.setItem('total', JSON.stringify(total))
@@ -108,12 +111,12 @@ export const StateContext = ({ children }: { children: React.ReactNode }) => {
   };
 
   const incQty = (id: number) => {
-    const find: ProductProps = cartItems.find(item => item.id == id)
+    const find: any = cartItems.find(item => item.id == id)
     const newCart = cartItems.filter(item => item.id !== id);
     setCartItems([...newCart, { ...find, quantity: find?.quantity + 1 }]);
   }
   const decQty = (id: number) => {
-    let find: ProductProps = cartItems.find(item => item.id == id)
+    let find: any  = cartItems.find(item => item.id == id)
     const newCart = cartItems.filter(item => item.id !== id);
     setCartItems([...newCart, { ...find, quantity: find?.quantity - 1 }]);
     if (find.quantity < 1) {
@@ -122,7 +125,7 @@ export const StateContext = ({ children }: { children: React.ReactNode }) => {
   }
 
   return (
-    <Context.Provider value={{ onRemove, cartItems, totalQuantities, setTotalQuantities, onAdd, qty, setQty, incQty, decQty, showCart, setShowCart, total }}>
+    <Context.Provider value={{ onRemove, cartItems, totalQuantities, setTotalQuantities, onAdd, qty, setQty, incQty, decQty, showCart, setShowCart, total}}>
       {children}
     </Context.Provider>
   )

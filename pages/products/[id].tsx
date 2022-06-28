@@ -14,7 +14,7 @@ import Style from '../../styles/id.module.css'
 
 const DetailProduct: NextPage = ({ params, similar }: InferGetStaticPropsType<typeof getStaticProps>) => {
   const { title, rating, price, description, category, image, id } = params
-  const { showCart, incQty, decQty, qty, onAdd, cartItems, totalPrice, totalQuantities } = useStateContext()
+  const {onAdd} = useStateContext()
 
 
   return (
