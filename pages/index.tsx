@@ -31,7 +31,7 @@ const Home: NextPage = ({ topProducts, newProducts }: InferGetStaticPropsType<ty
         <meta content="yes" name="apple-touch-fullscreen" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black" />
         <meta name="format-detection" content="telephone=no" />
-        <meta name="viewport" content="width = 320, initial-scale = 2.3, user-scalable = no" />
+
       </Head>
 
       <main className={style.container}>
