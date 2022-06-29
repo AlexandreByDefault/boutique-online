@@ -26,7 +26,7 @@ const Product: FC<ProductProps> = ({ id, title, image, price }) => {
   const {onAdd} = useStateContext()
   return (
     <li className={Style.container}>
-    <Link href={detailsProduct}>
+    <Link href={detailsProduct} title={title}>
       <a>
       <div className={Style.img}>
         <Image src={image} alt={title} width={150} height={150} layout={'fixed'} priority={false} title={title}/>
