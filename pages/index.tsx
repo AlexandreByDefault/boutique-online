@@ -10,33 +10,47 @@ const Home: NextPage = ({ topProducts, newProducts }: InferGetStaticPropsType<ty
   return (
     <Fragment>
       <Head>
+
         <title>Fake Boutique</title>
+        <meta property="og:title" content="Fake Boutique" key="title" />
         <meta name="description" content="Fake Boutique online is a place where you can't buy stuff you want because it do not really exist" />
         <meta name="keywords" content="boutique, product, new arrivals, top products," />
         <meta name="author" content="AlexandreByDefault" />
         <link rel="icon" href="/favicon.ico" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta name="copyright" content="FakeStoreApi"></meta>
+        <meta name="category" content="Ecommerce"></meta>
+        <meta name="subject" content="Store online, Buy Product"></meta>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="og:title" content="Fake Boutique" />
+        <meta name="og:type" content="ecommerce" />
+        <meta name="og:region" content="US" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta content="yes" name="apple-touch-fullscreen" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="viewport" content="width = 320, initial-scale = 2.3, user-scalable = no" />
       </Head>
 
       <main className={style.container}>
-          <div className={style.section}>
-            <h1 className={style.titleHero}>
-              Welcome to <span> Fake Boutique </span>{" "}
-            </h1>
-            <p className={style.intro}>
-              You might looking for a new t-shirt or a luxury watch to impress
-              your girlfriend or your friend. Well ! you are on the good place !
-              here we have all of that and more ! Amazing right ? Take a look at
-              all our product in Products{" "}
-            </p>
-          </div>
+        <div className={style.section}>
+          <h1 className={style.titleHero}>
+            Fake Boutique
+          </h1>
+          <p className={style.intro}>
+            You might looking for a new t-shirt or a luxury watch to impress
+            your girlfriend or your friend. Well ! you are on the good place !
+            here we have all of that and more ! Amazing right ? Take a look at
+            all our product in Products{" "}
+          </p>
+        </div>
 
-          <div className={style.flexproduct}>
-            <h3 className={style.subTitle}>Top rated products</h3>
-            <Products items={topProducts} />
-            <h3 className={style.subTitle}>New Arrivals</h3>
-            <Products items={newProducts} />
-          </div>
+        <div className={style.flexproduct}>
+          <h3 className={style.subTitle}>Top rated products</h3>
+          <Products items={topProducts} />
+          <h3 className={style.subTitle}>New Arrivals</h3>
+          <Products items={newProducts} />
+        </div>
 
 
       </main>
@@ -54,7 +68,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
   const recommendedProducts = products.filter((product: ProductProps) => (product.rating!.rate >= 4.4));
   const newProducts = products.filter((product: ProductProps) => (product.rating!.rate <= 3.4));
   const reducedNewProducts = reduceArray(newProducts, 4);
-  const reducedRecommandedProducts = reduceArray(recommendedProducts,4);
+  const reducedRecommandedProducts = reduceArray(recommendedProducts, 4);
   return {
     props: {
       topProducts: reducedRecommandedProducts,
