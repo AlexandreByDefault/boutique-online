@@ -29,7 +29,7 @@ const Cart = () => {
           <div className={Style.btn}>
           <p className={Style.price}>TOTAL : <span> ${total}</span></p>
           <button onClick={() => alert("You can not buy fake product !")}> BUY ! </button>
-          <button onClick={() => setEmpty(true)}> Empty </button>
+          {cartItems.length >= 1 && <button onClick={() => setEmpty(true)}> Empty </button>}
           </div>
       </div>
     </div>
