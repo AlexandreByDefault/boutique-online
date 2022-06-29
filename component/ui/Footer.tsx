@@ -1,12 +1,12 @@
 import Link from 'next/link'
 import React from 'react'
 
-type Props = {}
 
-const Footer = (props: Props) => {
+
+const Footer = () => {
   return (
     <div className='container'>
-    <p>This website made with love with &hearts; with <Link href={'https://fakestoreapi.com/'}>fakestoreapi.com</Link></p>
+    <p>This website made with &hearts; and <Link href={'https://fakestoreapi.com/'}>fakestoreapi.com</Link></p>
     <style jsx>{
 
       `.container{
