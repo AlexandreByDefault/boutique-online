@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from 'react'
+import React, { Fragment, useEffect, useState } from 'react'
 import Products from '../../component/product/Product-list'
 import { ProductProps } from '../../component/product/Product'
 import Head from 'next/head'
@@ -15,6 +15,9 @@ const AllProducts: NextPage = ({ category, products }: InferGetStaticPropsType<t
     setFilterProducts(filtered)
     return filtered;
   };
+  useEffect(()=>{
+    document.documentElement.lang = 'US'
+  },[])
   return (<Fragment>
     <Head>
       <title>Our Products</title>
