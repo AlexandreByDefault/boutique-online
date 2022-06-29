@@ -38,12 +38,6 @@ export const StateContext = ({ children }: { children: React.ReactNode }) => {
 
 
   useEffect(() => {
-    const total = localStorage.getItem('total')
-
-    if (total) {
-      JSON.parse(total)
-    }
-
     const quantity = localStorage.getItem('quantity')
 
 
@@ -64,11 +58,11 @@ export const StateContext = ({ children }: { children: React.ReactNode }) => {
   },[])
 
   useEffect(() => {
-    localStorage.setItem('total', JSON.stringify(total))
+
     localStorage.setItem('cartItems', JSON.stringify(cartItems))
     localStorage.setItem('qty', JSON.stringify(qty))
 
-  }, [total,  cartItems, qty])
+  }, [ cartItems, qty])
 
 
 

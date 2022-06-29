@@ -27,8 +27,8 @@ const Cart = () => {
         </div>
 
           <div className={Style.btn}>
-          <p className={Style.price}>TOTAL : <span> ${total}</span></p>
-          <button onClick={() => alert("You can not buy fake product !")}> BUY ! </button>
+          {total >0 && <p className={Style.price}>TOTAL : <span> ${total.toFixed(2)}</span></p>}
+          {total > 0 && <button onClick={() => alert("You can not buy fake product !")}> BUY ! </button> }
           {cartItems.length >= 1 && <button onClick={() => setEmpty(true)}> Empty </button>}
           </div>
       </div>
