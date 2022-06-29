@@ -11,7 +11,9 @@ const Home: NextPage = ({ topProducts, newProducts }: InferGetStaticPropsType<ty
     <Fragment>
       <Head>
         <title>Fake Boutique</title>
-        <meta name="home" content="Fake Boutique online is a place where you can't buy stuff you want because it do not really exist" />
+        <meta name="description" content="Fake Boutique online is a place where you can't buy stuff you want because it do not really exist" />
+        <meta name="keywords" content="boutique, product, new arrivals, top products," />
+        <meta name="author" content="AlexandreByDefault" />
         <link rel="icon" href="/favicon.ico" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
       </Head>

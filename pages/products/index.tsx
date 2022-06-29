@@ -18,8 +18,10 @@ const AllProducts: NextPage = ({ category, products }: InferGetStaticPropsType<t
   return (<Fragment>
     <Head>
       <title>Our Products</title>
-      <meta name="Our Products" content="See all our fake products that don't exist" />
+      <meta name="description" content="See all our fake products that don't exist" />
       <link rel="icon" href="/favicon.ico" />
+      <meta name="author" content="AlexandreByDefault" />
+      <meta name="keywords" content="boutique,store, product, new arrivals, top products," />
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </Head>
 
