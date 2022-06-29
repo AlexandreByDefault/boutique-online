@@ -28,7 +28,7 @@ const DetailProduct: NextPage = ({ params, similar }: InferGetStaticPropsType<ty
       </Head>
       <main className={Style.main}>
         <div className={Style.imgcontainer}>
-          <Image src={image} width={'100%'} height={'100%'} alt={title} layout={'responsive'} priority={false} title={title} />
+          <Image src={image} width={'100%'} height={'100%'} alt={title} layout={'responsive'} priority={false} title={title} placeholder={'blur'} blurDataURL={''}/>
         </div>
         <div className={Style.meta}>
           <div className={Style.infos}>
