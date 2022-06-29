@@ -46,6 +46,7 @@ const Header = () => {
         width: 100%;
         background-color: black;
         position: relative;
+        z-index:1;
       }
 
       .nav > .nav-header {
