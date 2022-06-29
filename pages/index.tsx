@@ -11,7 +11,7 @@ const Home: NextPage = ({ topProducts, newProducts }: InferGetStaticPropsType<ty
     <Fragment>
       <Head>
 
-        <title>Fake Boutique</title>
+        <title>Fake Boutique | The place where you cant buy fake product </title>
         <meta property="og:title" content="Fake Boutique" key="title" />
         <meta name="description" content="Fake Boutique online is a place where you can't buy stuff you want because it do not really exist" />
         <meta name="keywords" content="boutique, product, new arrivals, top products," />
@@ -35,7 +35,7 @@ const Home: NextPage = ({ topProducts, newProducts }: InferGetStaticPropsType<ty
       <main className={style.container}>
         <div className={style.section}>
           <h1 className={style.titleHero}>
-            Fake Boutique
+            THE BEST FAKE PRODUCT IN THE WORLD
           </h1>
           <p className={style.intro}>
             You might looking for a new t-shirt or a luxury watch to impress
