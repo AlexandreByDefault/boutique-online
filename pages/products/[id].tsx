@@ -32,7 +32,7 @@ const DetailProduct: NextPage = ({ params, similar }: InferGetStaticPropsType<ty
         </div>
         <div className={Style.meta}>
           <div className={Style.infos}>
-            <h2 className={Style.title}>{title}</h2>
+            <h1 className={Style.title}>{title}</h1>
             <p className={Style.description}>{description}</p>
           </div>
           <div>
