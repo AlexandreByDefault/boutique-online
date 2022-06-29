@@ -15,7 +15,7 @@ const Home: NextPage = ({ topProducts, newProducts }: InferGetStaticPropsType<ty
         <meta name="google-site-verification" content="P0JbfWrLIEEyviw-PmnF6_zp76BreJadF3dIxuivX0g" />
         <meta property="og:title" content="Fake Boutique" key="title" />
         <meta name="description" content="Fake Boutique online is a place where you can't buy stuff you want because it do not really exist" />
-        <meta name="keywords" content="boutique, product, new arrivals, top products," />
+        <meta name="keywords" content="boutique, product, new arrivals, top products,what is ecommerce, ecommerce website,best ecommerce platform" />
         <meta name="author" content="AlexandreByDefault" />
         <link rel="icon" href="/favicon.ico" />
         <meta name="copyright" content="FakeStoreApi"></meta>
